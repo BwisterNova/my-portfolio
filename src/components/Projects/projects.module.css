@@ -1,0 +1,104 @@
+.projectSection {
+  padding: 3rem 2rem;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+}
+
+.projectItem {
+  margin-top: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 350px;
+  max-height: 100%;
+  border: 1px solid rgba(162, 89, 236, 0.18);
+  border-radius: 16px;
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  background: none;
+  box-shadow: 0 8px 32px rgba(162, 89, 236, 0.18),
+    0 2px 8px rgba(34, 197, 94, 0.08);
+  transition: box-shadow 0.3s, transform 0.18s;
+}
+.projectCard:hover {
+  box-shadow: 0 16px 48px rgba(162, 89, 236, 0.28),
+    0 4px 16px rgba(34, 197, 94, 0.12);
+  transform: scale(1.03) translateY(-6px);
+  border: 1.5px solid #a259ec;
+}
+
+.projectImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.info {
+  margin-top: 1rem;
+}
+
+.info h3 {
+  font-weight: bold;
+}
+
+.info p {
+  padding: 1rem 0;
+  line-height: 1.2;
+  color: #c3c0c0;
+}
+
+.btn {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #a259ec 0%, #6a4cff 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  box-shadow: 0 4px 16px rgba(162, 89, 236, 0.25),
+    0 2px 8px rgba(34, 197, 94, 0.08);
+  transition: transform 0.18s, box-shadow 0.3s;
+  font-weight: 600;
+}
+.btn:hover {
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 8px 32px rgba(162, 89, 236, 0.35);
+}
+.btn a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 1024px) {
+  .projectItem {
+    grid-template-columns: repeat(auto-fit, minmax(227px, 1fr));
+  }
+}
+@media (max-width: 550px) {
+  .projectItem {
+    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .projectItem {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0;
+  }
+}

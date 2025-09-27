@@ -1,0 +1,141 @@
+.aboutContainer {
+  padding: 0rem 2rem;
+}
+
+.aboutIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.aboutIntro h2 {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.aboutIntro p {
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.techHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  display: none;
+}
+
+.toggleShow {
+  color: #a259ec;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Card with animated gradient border and per-image shadow (set inline) */
+.card {
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 14px;
+  max-width: 100px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  background: none;
+  position: relative;
+  z-index: 1;
+  /* Remove static box-shadow and border, use per-image shadow inline */
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+  border: 2px solid transparent;
+  /* Animated border below */
+}
+
+/* Animated gradient border using border-image
+.card {
+  border-image: linear-gradient(120deg, #a259ec, #6a4cff, #22c55e, #a259ec 100%)
+    1;
+  animation: gradient-move 3s linear infinite;
+  border-width: 2px;
+  border-radius: 10px;
+} */
+/* 
+@keyframes gradient-move {
+  0% {
+    border-image-source: linear-gradient(
+      120deg,
+      #a259ec,
+      #6a4cff,
+      #22c55e,
+      #a259ec 100%
+    );
+  }
+  100% {
+    border-image-source: linear-gradient(
+      480deg,
+      #a259ec,
+      #6a4cff,
+      #22c55e,
+      #a259ec 100%
+    );
+  }
+} */
+
+.card:hover {
+  transform: scale(1.08) translateY(-5px);
+  z-index: 2;
+}
+
+.card img {
+  width: 40px;
+
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .aboutContainer {
+    padding: 0rem 1rem;
+  }
+
+  .techHeader {
+    display: flex;
+    font-size: 0.8rem;
+  }
+  .grid {
+    padding: 0.9rem 0.5rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+
+  .card {
+    max-width: 80px;
+    min-height: 80px;
+    padding: 1rem;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-self: center;
+    gap: 2.5rem;
+  }
+}
