@@ -1,15 +1,15 @@
 import styles from "./header.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 // Nav items for easier mapping
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "about" },
+  { label: "Skills", href: "skills" },
+  { label: "Experience", href: "experience" },
+  { label: "Projects", href: "projects" },
+  { label: "Contact", href: "contact" },
 ];
 
 export default function Header() {
@@ -17,6 +17,21 @@ export default function Header() {
   const [nav, setNav] = useState(false);
   const [theme, setTheme] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null); // Track active nav item
+
+  // Prevent body scroll and add blur when mobile nav is open
+  useEffect(() => {
+    if (nav) {
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("nav-blur");
+    } else {
+      document.body.style.overflow = "auto";
+      document.body.classList.remove("nav-blur");
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.classList.remove("nav-blur");
+    };
+  }, [nav]);
 
   // Toggle mobile nav
   function handleNav() {
@@ -28,10 +43,16 @@ export default function Header() {
     setTheme((prev) => !prev);
   }
 
-  // Set active nav item
+  // Smooth scroll to section
   function handleActive(index) {
     setActiveIndex(index);
     setNav(false); // Close mobile nav on selection
+    // Get the section by id and scroll smoothly
+    const sectionId = navItems[index].href;
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   }
 
   return (
@@ -50,6 +71,7 @@ export default function Header() {
           justifyContent: "center",
         }}
       >
+        {/* Desktop navigation */}
         <nav className={styles.desktopNav}>
           <ul className={styles.navList}>
             {navItems.map((item, idx) => (
@@ -60,28 +82,35 @@ export default function Header() {
                 }`}
                 onClick={() => handleActive(idx)}
               >
-                <a href={item.href} className={styles.navLink}>
+                {/* Use button for accessibility and smooth scroll */}
+                <button
+                  className={styles.navLink}
+                  type="button"
+                  tabIndex={0}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                  }}
+                >
                   {item.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
         </nav>
-        {/* Theme Toggle */}
+        {/* Theme toggle button */}
         <div className={styles.themeToggle} onClick={handleTheme}>
           {theme ? <FaMoon size={20} /> : <FaSun size={20} />}
         </div>
-        {/* Mobile Nav Icon */}
+        {/* Mobile nav icon (hamburger/close) */}
         <div className={styles.mobileNavIcon} onClick={handleNav}>
           {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
         </div>
 
         {/* Mobile Nav Drawer */}
-        <nav
-          className={`${styles.mobileNavDrawer} ${nav ? styles.open : ""}`}
-          // aria-hidden for accessibility
-          aria-hidden={!nav}
-        >
+        <nav className={`${styles.mobileNavDrawer} ${nav ? styles.open : ""}`}>
           <ul className={styles.mobileNavList}>
             {navItems.map((item, idx) => (
               <li
@@ -90,10 +119,22 @@ export default function Header() {
                   activeIndex === idx ? styles.active : ""
                 }`}
                 onClick={() => handleActive(idx)}
+                style={{ width: "100%", textAlign: "center" }}
               >
-                <a href={item.href} className={styles.navLink}>
+                <button
+                  className={styles.navLink}
+                  type="button"
+                  tabIndex={0}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                    width: "100%",
+                  }}
+                >
                   {item.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

@@ -35,7 +35,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className={styles.projectSection}>
+    <section className={styles.projectSection} id="projects">
       <h2 className={styles.title}>LATEST WORK</h2>
       <div>
         <span className={styles.projectItem}>

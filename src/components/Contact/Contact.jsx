@@ -50,7 +50,7 @@ export default function Contact() {
   }
 
   return (
-    <section className={styles.contactSection}>
+    <section className={styles.contactSection} id="contact">
       <h2 className={styles.title}>Get in Touch</h2>
       <p className={styles.description}>
         Feel free to reach out for collaborations, freelance work, or just to

@@ -49,10 +49,18 @@ export default function HeroSection() {
           visually appealing.
         </p>
         <div className={styles.socialIcons}>
-          <FaFacebook className={styles.socialLinks} />
-          <FaGithub className={styles.socialLinks} />
-          <FaInstagram className={styles.socialLinks} />
-          <FaLinkedin className={styles.socialLinks} />
+          <a href="https://www.facebook.com/bright.arubuola?mibextid=ZbWKwL">
+            <FaFacebook className={styles.socialLinks} />
+          </a>
+          <a href="https://github.com/BwisterNova">
+            <FaGithub className={styles.socialLinks} />
+          </a>
+          <a href="https://www.instagram.com/_brightayomide_?igsh=YzljYTk1ODg3Zg==">
+            <FaInstagram className={styles.socialLinks} />
+          </a>
+          <a href="https://ng.linkedin.com/in/bright-ayomide-1725a72aa">
+            <FaLinkedin className={styles.socialLinks} />
+          </a>
         </div>
         <div className={styles.heroButtons}>
           <button className={styles.heroButton1}>Contact me</button>

@@ -103,8 +103,10 @@ export default function About() {
     setShowMore((prev) => !prev);
   }
 
+  // finding the is and smooth scroll to section
+
   return (
-    <section className={styles.aboutContainer}>
+    <section className={styles.aboutContainer} id="about">
       <div className={styles.aboutIntro}>
         <p>INTRODUCTION</p>
         <h2>Overview</h2>
@@ -113,8 +115,9 @@ export default function About() {
           backend development. With expertise in modern web technologies, I
           create responsive websites and user-friendly applications. My skills
           extend to UI/UX design, writing codes and also using no-code
-          development tools, allowing me to deliver comprehensive solutions that
-          combine functionality with attractiveness.
+          development tools, allowing me to solve problems and deliver
+          comprehensive solutions that combine functionality with
+          attractiveness.
         </p>
       </div>
       <div className={styles.techStacks}>

@@ -28,7 +28,7 @@ const Expertise = [
 
 export default function Skills() {
   return (
-    <section className={styles.skillContainer}>
+    <section className={styles.skillContainer} id="skills">
       <h2>TECHNICAL EXPERTISE</h2>
       {/* Centered and equal-width cards */}
       <div className={styles.expertiseContainer}>

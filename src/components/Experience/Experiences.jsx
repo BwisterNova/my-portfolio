@@ -24,7 +24,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section className={styles.experienceSection}>
+    <section className={styles.experienceSection} id="experience">
       <h2 className={styles.title}>WORK EXPERIENCE</h2>
 
       <div className={styles.experiencesList}>
