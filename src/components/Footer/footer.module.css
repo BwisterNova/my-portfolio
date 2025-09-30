@@ -1,8 +1,8 @@
 .footerContainer {
   padding: 0 2rem;
   overflow: hidden;
-  background: var(--color-bg-secondary);
   color: var(--color-text);
+  padding-bottom: 1rem;
 }
 
 .footerInfo {

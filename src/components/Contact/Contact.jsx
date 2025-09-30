@@ -1,72 +1,83 @@
 import styles from "./contact.module.css";
 import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
-  // Ref for the form DOM node (for emailjs)
-  const formRef = useRef();
-
   // Form state: stores the values of the form fields
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   // Errors state: stores validation error messages for each field
   const [errors, setErrors] = useState({});
-  // Submitted state: tracks if the form was successfully submitted
-  const [submitted, setSubmitted] = useState(false);
+  // Message state: { type: 'success' | 'error', text: string }
+  const [message, setMessage] = useState(null);
+  // Timer for auto-dismiss
+  const timerRef = useRef(null);
 
   // Simple validation function for the form fields
   function validate() {
     const newErrors = {};
-    // Check if name is empty
     if (!form.name.trim()) newErrors.name = "Name is required";
-    // Check if email is empty
     if (!form.email.trim()) newErrors.email = "Email is required";
-    // Check if email format is valid using a regular expression
     else if (!/^\S+@\S+\.\S+$/.test(form.email))
       newErrors.email = "Invalid email";
-    // Check if message is empty
     if (!form.message.trim()) newErrors.message = "Message is required";
     return newErrors;
   }
 
   // Handle input changes: update form state and clear error for the field
   function handleChange(e) {
-    // Map input names to form state keys
     const { name, value } = e.target;
-    let key = name;
-    if (name === "user_name") key = "name";
-    if (name === "user_email") key = "email";
-    setForm({ ...form, [key]: value });
-    setErrors({ ...errors, [key]: undefined });
+    setForm({ ...form, [name]: value });
+    setErrors({ ...errors, [name]: undefined });
   }
 
-  // Handle form submission
-  function handleSubmit(e) {
-    e.preventDefault(); // Prevent default form submit
-    const newErrors = validate(); // Validate fields
-    setErrors(newErrors); // Set errors if any
+  // Handle form submission with Formspree
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const newErrors = validate();
+    setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      // Send email using emailjs
-      emailjs
-        .sendForm(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID,
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-          formRef.current,
-          {
-            publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-          }
-        )
-        .then(
-          () => {
-            setSubmitted(true); // Show success message
-            setForm({ name: "", email: "", message: "" }); // Reset form
-          },
-          (error) => {
-            setSubmitted(false);
-            alert("Failed to send message. Please try again.");
-            console.log("FAILED...", error.text);
-          }
-        );
+      try {
+        // Send form data to Formspree
+        const response = await fetch("https://formspree.io/f/xkgqreqb", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            message: form.message,
+          }),
+        });
+        if (response.ok) {
+          setForm({ name: "", email: "", message: "" });
+          showMessage({
+            type: "success",
+            text: "Message sent! I'll get back to you soon.",
+          });
+        } else {
+          showMessage({
+            type: "error",
+            text: "Failed to send message. Please try again.",
+          });
+        }
+      } catch (err) {
+        showMessage({
+          type: "error",
+          text: "Failed to send message. Please try again.",
+        });
+      }
     }
+  }
+
+  // Show message and auto-dismiss after 4s (or keep if user closes early)
+  function showMessage(msg) {
+    setMessage(msg);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setMessage(null), 4000);
+  }
+
+  // Manual close for message
+  function handleCloseMessage() {
+    setMessage(null);
+    if (timerRef.current) clearTimeout(timerRef.current);
   }
 
   return (
@@ -76,17 +87,37 @@ export default function Contact() {
         Feel free to reach out for collaborations, freelance work, or just to
         say hello! I’ll get back to you as soon as possible.
       </p>
+      {/* Success/Error message popup */}
+      {message && (
+        <div
+          className={
+            message.type === "success"
+              ? styles.successMsg + " " + styles.popupMsg
+              : styles.errorMsg + " " + styles.popupMsg
+          }
+        >
+          {message.text}
+          <button
+            onClick={handleCloseMessage}
+            className={styles.closeMsgBtn}
+            aria-label="Close message"
+            type="button"
+          >
+            ×
+          </button>
+        </div>
+      )}
       <form
-        ref={formRef}
         className={styles.form}
         onSubmit={handleSubmit}
         noValidate
+        autoComplete="off"
       >
         <div className={styles.rowInputs}>
           <div className={styles.inputGroup}>
             <input
               type="text"
-              name="user_name"
+              name="name"
               placeholder="Name"
               value={form.name}
               onChange={handleChange}
@@ -100,7 +131,7 @@ export default function Contact() {
           <div className={styles.inputGroup}>
             <input
               type="email"
-              name="user_email"
+              name="email"
               placeholder="Email"
               value={form.email}
               onChange={handleChange}
@@ -129,11 +160,6 @@ export default function Contact() {
         <button type="submit" value="Send" className={styles.submitBtn}>
           Send Message
         </button>
-        {submitted && (
-          <p className={styles.successMsg}>
-            Message sent! I'll get back to you soon.
-          </p>
-        )}
       </form>
     </section>
   );
