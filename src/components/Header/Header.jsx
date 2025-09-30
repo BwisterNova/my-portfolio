@@ -2,21 +2,27 @@ import styles from "./header.module.css";
 import { useState, useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { useTheme } from "../Theme/ThemeContext";
 
-// Nav items for easier mapping
-const navItems = [
-  { label: "About", href: "about" },
-  { label: "Skills", href: "skills" },
-  { label: "Experience", href: "experience" },
-  { label: "Projects", href: "projects" },
-  { label: "Contact", href: "contact" },
-];
+//dark and light mode image
+import sun from "../../assets/images/lightMode.png";
+import moon from "../../assets/images/darkMode.png";
 
 export default function Header() {
+  // Nav items for easier mapping
+  const navItems = [
+    { label: "About", href: "about" },
+    { label: "Skills", href: "skills" },
+    { label: "Experience", href: "experience" },
+    { label: "Projects", href: "projects" },
+    { label: "Contact", href: "contact" },
+  ];
+
   // For mobile nav, theme toggle, and active nav item
   const [nav, setNav] = useState(false);
-  const [theme, setTheme] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null); // Track active nav item
+  // Use theme context
+  const { theme, toggleTheme } = useTheme();
 
   // Prevent body scroll and add blur when mobile nav is open
   useEffect(() => {
@@ -38,9 +44,9 @@ export default function Header() {
     setNav((prev) => !prev);
   }
 
-  // Toggle theme (light/dark)
+  // Toggle theme (light/dark) using context
   function handleTheme() {
-    setTheme((prev) => !prev);
+    toggleTheme();
   }
 
   // Smooth scroll to section
@@ -101,8 +107,37 @@ export default function Header() {
           </ul>
         </nav>
         {/* Theme toggle button */}
-        <div className={styles.themeToggle} onClick={handleTheme}>
-          {theme ? <FaMoon size={20} /> : <FaSun size={20} />}
+        <div
+          className={styles.themeToggle}
+          onClick={handleTheme}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={theme === "dark" ? sun : moon}
+            alt={theme === "dark" ? "Light mode" : "Dark mode"}
+            className={
+              styles.themeIcon + " " + (nav ? styles.noPointerEvents : "")
+            }
+            style={{
+              width: 28,
+              height: 28,
+              transition: "transform 0.5s cubic-bezier(0.4,0,0.2,1)",
+              transform: "rotate(0deg)",
+              cursor: "pointer",
+              userSelect: "none",
+            }}
+            onAnimationEnd={(e) =>
+              e.currentTarget.classList.remove(styles.rotate)
+            }
+            onClick={(e) => {
+              e.currentTarget.classList.add(styles.rotate);
+              handleTheme();
+            }}
+          />
         </div>
         {/* Mobile nav icon (hamburger/close) */}
         <div className={styles.mobileNavIcon} onClick={handleNav}>

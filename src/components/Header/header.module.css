@@ -1,22 +1,24 @@
 /* Header container */
 .header {
   padding: 20px;
-  color: #000;
+  color: var(--color-text);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(162, 89, 236, 0.08);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 2px 8px var(--color-border);
+  transition: background 0.3s, color 0.3s;
 }
 
 .title {
   font-size: 24px;
   margin: 0;
-  color: #f4f4f4;
+  color: var(--color-text);
 }
 
 /* Accent color for logo */
 .accent {
-  color: #a259ec;
+  color: var(--color-accent);
   font-weight: bold;
 }
 
@@ -46,7 +48,7 @@
 
 /* Nav link base styles */
 .navLink {
-  color: #f4f4f4;
+  color: var(--color-text);
   text-decoration: none;
   padding: 4px 0;
   transition: color 0.3s;
@@ -61,7 +63,7 @@
   bottom: 0;
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, #a259ec 0%, #6a4cff 100%);
+  background: var(--color-btn-gradient);
   border-radius: 2px;
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,7 +71,7 @@
 
 .navItem:hover .navLink,
 .navItem:focus .navLink {
-  color: #a259ec;
+  color: var(--color-accent);
 }
 
 .navItem:hover::after,
@@ -80,19 +82,19 @@
 
 /* Active nav item styles */
 .active .navLink {
-  color: #a259ec;
+  color: var(--color-accent);
   font-weight: bold;
 }
 .active::after {
   width: 100%;
   left: 0;
-  background: linear-gradient(90deg, #a259ec 0%, #6a4cff 100%);
+  background: var(--color-btn-gradient);
 }
 
 /* Theme toggle icon */
 .themeToggle {
   cursor: pointer;
-  color: #f4f4f4;
+  color: var(--color-text);
   margin-left: 20px;
   transition: color 0.3s;
 }
@@ -101,7 +103,7 @@
 .mobileNavIcon {
   display: none;
   cursor: pointer;
-  color: #f4f4f4;
+  color: var(--color-text);
   z-index: 1002;
 }
 
@@ -115,9 +117,11 @@
   width: 70vw;
   max-width: 350px;
   height: 100vh;
-  background: linear-gradient(120deg, #18181b 70%, #6a4cff 100%);
-  box-shadow: -2px 0 32px rgba(162, 89, 236, 0.18);
-  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  box-shadow: -2px 0 32px var(--color-border);
+  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s,
+    color 0.3s;
   z-index: 1001;
   display: flex;
   flex-direction: column;
@@ -156,6 +160,36 @@ body.nav-blur #root {
   display: block;
 }
 
+/* Theme toggle image icon */
+.themeIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-block;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Rotation animation for theme toggle */
+.rotate {
+  animation: rotateTheme 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes rotateTheme {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.noPointerEvents {
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .desktopNav {
     display: none;
@@ -169,6 +203,10 @@ body.nav-blur #root {
 
   .themeToggle {
     margin-right: 1rem;
+  }
+
+  .navItem {
+    margin-right: 0;
   }
 
   .mobileNavList {

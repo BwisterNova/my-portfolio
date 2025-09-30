@@ -1,10 +1,49 @@
+/* CSS Variables for Theming */
+:root {
+  --color-bg: #18181b;
+  --color-bg-secondary: #23212d;
+  --color-text: #f4f4f4;
+  --color-accent: #a259ec;
+  --color-accent2: #6a4cff;
+  --color-card: #23212d;
+  --color-shadow: 0 4px 32px rgba(162, 89, 236, 0.08);
+  --color-border: rgba(162, 89, 236, 0.18);
+  --color-btn-gradient: linear-gradient(90deg, #a259ec 0%, #6a4cff 100%);
+}
+
+body.dark {
+  --color-bg: #18181b;
+  --color-bg-secondary: #23212d;
+  --color-text: #f4f4f4;
+  --color-accent: #a259ec;
+  --color-accent2: #6a4cff;
+  --color-card: #23212d;
+  --color-shadow: 0 4px 32px rgba(162, 89, 236, 0.08);
+  --color-border: rgba(162, 89, 236, 0.18);
+  --color-btn-gradient: linear-gradient(90deg, #a259ec 0%, #6a4cff 100%);
+}
+
+body.light {
+  --color-bg: #f7f7fa;
+  --color-bg-secondary: #fff;
+  --color-text: #23212d;
+  --color-accent: #6a4cff;
+  --color-accent2: #a259ec;
+  --color-card: #fff;
+  --color-shadow: 0 4px 32px rgba(162, 89, 236, 0.1);
+  --color-border: #e0e0e0;
+  --color-btn-gradient: linear-gradient(90deg, #6a4cff 0%, #a259ec 100%);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #18181b;
-  color: #f4f4f4;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.3s, color 0.3s;
 }

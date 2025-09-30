@@ -1,7 +1,11 @@
 import styles from "./contact.module.css";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  // Ref for the form DOM node (for emailjs)
+  const formRef = useRef();
+
   // Form state: stores the values of the form fields
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   // Errors state: stores validation error messages for each field
@@ -17,14 +21,6 @@ export default function Contact() {
     // Check if email is empty
     if (!form.email.trim()) newErrors.email = "Email is required";
     // Check if email format is valid using a regular expression
-    // /^\S+@\S+\.\S+$/ means:
-    //   - ^ and $: start and end of string
-    //   - \S+: one or more non-whitespace characters
-    //   - @: must have an @ symbol
-    //   - \S+: one or more non-whitespace characters after @
-    //   - \. : must have a dot
-    //   - \S+: one or more non-whitespace characters after the dot
-    // This is a basic check for email format
     else if (!/^\S+@\S+\.\S+$/.test(form.email))
       newErrors.email = "Invalid email";
     // Check if message is empty
@@ -34,8 +30,13 @@ export default function Contact() {
 
   // Handle input changes: update form state and clear error for the field
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: undefined });
+    // Map input names to form state keys
+    const { name, value } = e.target;
+    let key = name;
+    if (name === "user_name") key = "name";
+    if (name === "user_email") key = "email";
+    setForm({ ...form, [key]: value });
+    setErrors({ ...errors, [key]: undefined });
   }
 
   // Handle form submission
@@ -44,8 +45,27 @@ export default function Contact() {
     const newErrors = validate(); // Validate fields
     setErrors(newErrors); // Set errors if any
     if (Object.keys(newErrors).length === 0) {
-      setSubmitted(true); // Show success message
-      // Here you can connect to emailjs or formspree
+      // Send email using emailjs
+      emailjs
+        .sendForm(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          formRef.current,
+          {
+            publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+          }
+        )
+        .then(
+          () => {
+            setSubmitted(true); // Show success message
+            setForm({ name: "", email: "", message: "" }); // Reset form
+          },
+          (error) => {
+            setSubmitted(false);
+            alert("Failed to send message. Please try again.");
+            console.log("FAILED...", error.text);
+          }
+        );
     }
   }
 
@@ -56,12 +76,17 @@ export default function Contact() {
         Feel free to reach out for collaborations, freelance work, or just to
         say hello! I’ll get back to you as soon as possible.
       </p>
-      <form className={styles.form} onSubmit={handleSubmit} noValidate>
+      <form
+        ref={formRef}
+        className={styles.form}
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <div className={styles.rowInputs}>
           <div className={styles.inputGroup}>
             <input
               type="text"
-              name="name"
+              name="user_name"
               placeholder="Name"
               value={form.name}
               onChange={handleChange}
@@ -75,7 +100,7 @@ export default function Contact() {
           <div className={styles.inputGroup}>
             <input
               type="email"
-              name="email"
+              name="user_email"
               placeholder="Email"
               value={form.email}
               onChange={handleChange}
@@ -101,7 +126,7 @@ export default function Contact() {
             <span className={styles.errorMsg}>{errors.message}</span>
           )}
         </div>
-        <button type="submit" className={styles.submitBtn}>
+        <button type="submit" value="Send" className={styles.submitBtn}>
           Send Message
         </button>
         {submitted && (

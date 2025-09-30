@@ -103,7 +103,7 @@ export default function About() {
     setShowMore((prev) => !prev);
   }
 
-  // finding the is and smooth scroll to section
+
 
   return (
     <section className={styles.aboutContainer} id="about">

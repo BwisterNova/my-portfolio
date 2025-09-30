@@ -1,22 +1,24 @@
 /* Contact section styles */
 .contactSection {
   padding: 3rem 2rem;
-  background: linear-gradient(120deg, #18181b 60%, #6a4cff 100%);
+  background: var(--color-card);
   border-radius: 1.5rem;
-  box-shadow: 0 4px 32px rgba(162, 89, 236, 0.08);
+  box-shadow: var(--color-shadow);
   max-width: 700px;
   margin: 2rem auto;
+  color: var(--color-text);
 }
 .title {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  color: #a259ec;
+  color: var(--color-accent);
   margin-bottom: 0.5rem;
 }
 .description {
   text-align: center;
-  color: #e5e7eb;
+  color: var(--color-text);
+  opacity: 0.85;
   font-size: 1.1rem;
   margin-bottom: 2rem;
 }
@@ -39,16 +41,16 @@ input,
 textarea {
   padding: 0.8rem 1rem;
   border-radius: 0.8rem;
-  border: 1.5px solid #a259ec;
-  background: #18181b;
-  color: #fff;
+  border: 1.5px solid var(--color-accent);
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
   font-size: 1rem;
   outline: none;
-  transition: border 0.2s;
+  transition: border 0.2s, background 0.3s, color 0.3s;
 }
 input:focus,
 textarea:focus {
-  border: 2px solid #6a4cff;
+  border: 2px solid var(--color-accent2);
 }
 .errorInput {
   border: 2px solid #ff368b;
@@ -67,18 +69,18 @@ textarea:focus {
 .submitBtn {
   padding: 0.9rem 2rem;
   border-radius: 50px;
-  background: linear-gradient(90deg, #a259ec 0%, #6a4cff 100%);
+  background: var(--color-btn-gradient);
   color: #fff;
   border: none;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(162, 89, 236, 0.25);
+  box-shadow: 0 4px 16px var(--color-border);
   transition: transform 0.18s, box-shadow 0.3s;
 }
 .submitBtn:hover {
   transform: scale(1.06) translateY(-4px);
-  box-shadow: 0 8px 32px rgba(162, 89, 236, 0.35);
+  box-shadow: 0 8px 32px var(--color-accent2);
 }
 
 @media (max-width: 700px) {

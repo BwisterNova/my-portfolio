@@ -12,6 +12,12 @@ import {
 import profilePic from "../../assets/images/profile.jpg";
 
 export default function HeroSection() {
+  function scrollToSection() {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
   return (
     <div className={styles.heroContainer}>
       <div className={styles.heroIntro}>
@@ -63,7 +69,9 @@ export default function HeroSection() {
           </a>
         </div>
         <div className={styles.heroButtons}>
-          <button className={styles.heroButton1}>Contact me</button>
+          <button className={styles.heroButton1} onClick={scrollToSection}>
+            Contact me
+          </button>
           <button className={styles.heroButton2}>
             <FaDotCircle
               style={{

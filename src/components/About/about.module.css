@@ -1,5 +1,7 @@
 .aboutContainer {
   padding: 0rem 2rem;
+  background: none;
+  color: var(--color-text);
 }
 
 .aboutIntro {
@@ -11,6 +13,7 @@
 .aboutIntro h2 {
   font-size: 2rem;
   font-weight: bolder;
+  color: var(--color-accent);
 }
 
 .aboutIntro p {
@@ -30,7 +33,7 @@
 }
 
 .toggleShow {
-  color: #a259ec;
+  color: var(--color-accent);
   cursor: pointer;
   font-weight: bold;
   transition: color 0.3s;
@@ -57,12 +60,13 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  background: none;
+  background: var(--color-card);
+  color: var(--color-text);
   position: relative;
   z-index: 1;
   /* Remove static box-shadow and border, use per-image shadow inline */
   transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
-  border: 2px solid transparent;
+  border: 2px solid var(--color-border);
   /* Animated border below */
 }
 

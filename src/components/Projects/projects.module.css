@@ -1,10 +1,12 @@
 .projectSection {
   padding: 3rem 2rem;
   align-items: center;
+  background: none;
 }
 
 .title {
   text-align: center;
+  color: var(--color-accent);
 }
 
 .projectItem {
@@ -23,19 +25,18 @@
   align-items: center;
   max-width: 350px;
   max-height: 100%;
-  border: 1px solid rgba(162, 89, 236, 0.18);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 1.2rem 1rem 1.5rem 1rem;
-  background: none;
-  box-shadow: 0 8px 32px rgba(162, 89, 236, 0.18),
-    0 2px 8px rgba(34, 197, 94, 0.08);
+  background: var(--color-card);
+  box-shadow: var(--color-shadow);
   transition: box-shadow 0.3s, transform 0.18s;
 }
 .projectCard:hover {
-  box-shadow: 0 16px 48px rgba(162, 89, 236, 0.28),
+  box-shadow: 0 16px 48px var(--color-border),
     0 4px 16px rgba(34, 197, 94, 0.12);
   transform: scale(1.03) translateY(-6px);
-  border: 1.5px solid #a259ec;
+  border: 1.5px solid var(--color-accent);
 }
 
 .projectImg {
@@ -56,7 +57,8 @@
 .info p {
   padding: 1rem 0;
   line-height: 1.2;
-  color: #c3c0c0;
+  color: var(--color-text);
+  opacity: 0.85;
 }
 
 .btn {
@@ -66,19 +68,18 @@
   align-items: center;
   gap: 6px;
   border-radius: 50px;
-  background: linear-gradient(90deg, #a259ec 0%, #6a4cff 100%);
+  background: var(--color-btn-gradient);
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 0.7rem;
-  box-shadow: 0 4px 16px rgba(162, 89, 236, 0.25),
-    0 2px 8px rgba(34, 197, 94, 0.08);
+  box-shadow: 0 4px 16px var(--color-border);
   transition: transform 0.18s, box-shadow 0.3s;
   font-weight: 600;
 }
 .btn:hover {
   transform: scale(1.06) translateY(-4px);
-  box-shadow: 0 8px 32px rgba(162, 89, 236, 0.35);
+  box-shadow: 0 8px 32px var(--color-accent2);
 }
 .btn a {
   text-decoration: none;
