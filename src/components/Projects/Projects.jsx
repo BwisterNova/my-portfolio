@@ -3,6 +3,7 @@ import styles from "./projects.module.css";
 // Images
 import kreaImage from "../../assets/images/kreaAi.png";
 import defavour from "../../assets/images/defavour.png";
+import todoImage from "../../assets/images/todoImage.png";
 
 import { BiWorld } from "react-icons/bi";
 
@@ -25,11 +26,11 @@ const projects = [
   },
   {
     id: 3,
-    image: kreaImage,
-    title: "Krea AI ",
+    image: todoImage,
+    title: "Todo List",
     description:
-      "A simple landing page without backends, routing or any actions just simple, clean UI design with toggle dark/light mode",
-    link: "https://kea-landing-page.vercel.app/",
+      "A simple yet functional To-Do List app that allows users to add, mark and delete tasks, helping them stay organized.",
+    link: "https://bucket-list-sand.vercel.app/",
   },
 ];
 
