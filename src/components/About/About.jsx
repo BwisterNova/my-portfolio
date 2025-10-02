@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // Tech stacks images
 
 import reactImage from "../../assets/images/reactJs.png";
-import html from "../../assets/images/html.webp";
+import htmlImage from "../../assets/images/html.webp";
 import Javasccript from "../../assets/images/Js.png";
 import CSS from "../../assets/images/css.png";
 import wix from "../../assets/images/wixLogo.png";
@@ -24,7 +24,7 @@ const techStacks = [
   },
   {
     id: 2,
-    src: html,
+    src: htmlImage,
     title: "HTML",
     shadowColor: "#e44d26",
   },
