@@ -2,7 +2,8 @@ import styles from "./about.module.css";
 import { useState, useEffect } from "react";
 
 // Tech stacks images
-import reactjs from "../../assets/images/reactjs.png";
+
+import reactImage from "../../assets/images/reactJs.png";
 import html from "../../assets/images/html.webp";
 import Javasccript from "../../assets/images/Js.png";
 import CSS from "../../assets/images/css.png";
@@ -17,7 +18,7 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 const techStacks = [
   {
     id: 1,
-    src: reactjs,
+    src: reactImage,
     title: "React",
     shadowColor: "#61dafb",
   },
@@ -102,8 +103,6 @@ export default function About() {
   function toggleShowMore() {
     setShowMore((prev) => !prev);
   }
-
-
 
   return (
     <section className={styles.aboutContainer} id="about">
