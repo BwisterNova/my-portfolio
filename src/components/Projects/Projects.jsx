@@ -22,7 +22,7 @@ const projects = [
     title: "Defavour Cakes & Events ",
     description:
       "A modern, mobile-friendly business site showcasing Defavour's services in cake making, decorations and event planning.",
-    link: "https://defavour-cakes-and-event.netlify.app/",
+    link: "https://defavour-global-concepts-and-events.netlify.app/",
   },
   {
     id: 3,
