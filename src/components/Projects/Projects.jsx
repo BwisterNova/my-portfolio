@@ -4,12 +4,20 @@ import styles from "./projects.module.css";
 import kreaImage from "../../assets/images/kreaAi.png";
 import defavour from "../../assets/images/defavour.png";
 import todoImage from "../../assets/images/todoImage.png";
+import songScribe from "../../assets/images/songScribe.png";
 
 import { BiWorld } from "react-icons/bi";
 
 const projects = [
   {
     id: 1,
+    image: songScribe,
+    title: "SongScribe ",
+    description: "SongScribe is a smart music companion that identifies songs, retrieves lyrics, and provides seamless access across platforms.",
+    link: "https://songscribe-lyrics.vercel.app/",
+  },
+  {
+    id: 2,
     image: kreaImage,
     title: "Krea AI ",
     description:
@@ -17,7 +25,7 @@ const projects = [
     link: "https://kea-landing-page.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     image: defavour,
     title: "Defavour Cakes & Events ",
     description:
@@ -25,7 +33,7 @@ const projects = [
     link: "https://defavour-global-concepts-and-events.netlify.app/",
   },
   {
-    id: 3,
+    id: 4,
     image: todoImage,
     title: "Todo List",
     description:
