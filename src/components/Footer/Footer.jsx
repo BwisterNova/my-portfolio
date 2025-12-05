@@ -12,17 +12,33 @@ export default function Footer() {
           Bright<span className={styles.accent}>.A</span>
         </p>
         <span className={styles.footerIcons}>
-          <a href="https://wa.me/qr/WJGUKZ72AHPLH1">
+          <a
+            href="https://wa.me/qr/WJGUKZ72AHPLH1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaWhatsapp className={styles.socialLinks} />
           </a>
-          <a href="https://www.facebook.com/bright.arubuola?mibextid=ZbWKwL">
+          <a
+            href="https://www.facebook.com/bright.arubuola?mibextid=ZbWKwL"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaFacebook className={styles.socialLinks} />
           </a>
 
-          <a href="https://www.instagram.com/_brightayomide_?igsh=YzljYTk1ODg3Zg==">
+          <a
+            href="https://www.instagram.com/_brightayomide_?igsh=YzljYTk1ODg3Zg=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram className={styles.socialLinks} />
           </a>
-          <a href="https://ng.linkedin.com/in/bright-ayomide-1725a72aa">
+          <a
+            href="https://ng.linkedin.com/in/bright-ayomide-1725a72aa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedin className={styles.socialLinks} />
           </a>
         </span>

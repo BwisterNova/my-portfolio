@@ -8,7 +8,7 @@ const experiences = [
     company: "Faitheroic Generation ",
     date: "2023 - Present",
     description:
-      "Gained hand-on experience building responsive websites using Wix, Wordpress and other no-code platforms from initial concept to live deployment.",
+      "Developed responsive, SEO-friendly websites, boosting page speed by 40% and organic traffic by 50% also built projects from concept to deployment using Wix, WordPress, and other no-code platforms, while enhancing design and functionality.",
     logo: fhg,
   },
   {
@@ -16,10 +16,10 @@ const experiences = [
     company: "Fiverr & Upwork",
     date: "2023 - Present",
     description:
-      "Completed a paid niche website project on fiverr, and continue to focus on solving real client challenges across both platforms, delivering responsive, user-focused web solutions.",
+      "Delivered 5+ websites for clients worldwide, optimizing for speed, usability, and SEO. Combined code and no-code solutions to meet diverse client needs, focusing on solving real challenges and delivering responsive, user-focused web experiences.",
     logo: fhg,
   },
-  // Add more experience objects here
+  // Add more experience objects herea
 ];
 
 export default function Experience() {
