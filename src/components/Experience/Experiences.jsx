@@ -6,7 +6,7 @@ const experiences = [
   {
     title: "Website Developer",
     company: "Faitheroic Generation ",
-    date: "2023-2025",
+    date: "2023 - Present",
     description:
       "Gained hand-on experience building responsive websites using Wix, Wordpress and other no-code platforms from initial concept to live deployment.",
     logo: fhg,

@@ -13,7 +13,8 @@ const projects = [
     id: 1,
     image: songScribe,
     title: "SongScribe ",
-    description: "SongScribe is a smart music companion that identifies songs, retrieves lyrics, and provides seamless access across platforms.",
+    description:
+      "SongScribe is a smart music companion that identifies songs, retrieves lyrics, and provides seamless access across platforms.",
     link: "https://songscribe-lyrics.vercel.app/",
   },
   {
@@ -59,7 +60,10 @@ export default function Projects() {
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
                 <button className={styles.btn}>
-                  <BiWorld /> <a href={item.link}>LIVE DEMO</a>
+                  <BiWorld />{" "}
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    LIVE DEMO
+                  </a>
                 </button>
               </div>
             </div>

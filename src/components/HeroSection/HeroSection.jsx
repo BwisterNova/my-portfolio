@@ -1,6 +1,8 @@
 import Typewriter from "typewriter-effect";
 import styles from "./heroSection.module.css";
 import { motion } from "framer-motion";
+import resumePDF from "../../assets/resume.pdf";
+
 import {
   FaDotCircle,
   FaFacebook,
@@ -55,23 +57,39 @@ export default function HeroSection() {
           visually appealing.
         </p>
         <div className={styles.socialIcons}>
-          <a href="https://www.facebook.com/bright.arubuola?mibextid=ZbWKwL">
+          <a
+            href="https://www.facebook.com/bright.arubuola?mibextid=ZbWKwL"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaFacebook className={styles.socialLinks} />
           </a>
-          <a href="https://github.com/BwisterNova">
+          <a
+            href="https://github.com/BwisterNova"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaGithub className={styles.socialLinks} />
           </a>
-          <a href="https://www.instagram.com/_brightayomide_?igsh=YzljYTk1ODg3Zg==">
+          <a
+            href="https://www.instagram.com/_brightayomide_?igsh=YzljYTk1ODg3Zg=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram className={styles.socialLinks} />
           </a>
-          <a href="https://ng.linkedin.com/in/bright-ayomide-1725a72aa">
+          <a
+            href="https://ng.linkedin.com/in/bright-ayomide-1725a72aa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedin className={styles.socialLinks} />
           </a>
         </div>
         <div className={styles.heroButtons}>
-          <button className={styles.heroButton1} onClick={scrollToSection}>
-            Contact me
-          </button>
+          <a href={resumePDF} target="_blank" rel="noopener noreferrer">
+            <button className={styles.heroButton1}>View Resume</button>
+          </a>
           <button className={styles.heroButton2}>
             <FaDotCircle
               style={{
