@@ -58,7 +58,7 @@ export default function HeroSection() {
         </p>
         <div className={styles.socialIcons}>
           <a
-            href="https://www.facebook.com/bright.arubuola?mibextid=ZbWKwL"
+            href="https://www.facebook.com/share/1Cg9cH39NP/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -72,7 +72,7 @@ export default function HeroSection() {
             <FaGithub className={styles.socialLinks} />
           </a>
           <a
-            href="https://www.instagram.com/_brightayomide_?igsh=YzljYTk1ODg3Zg=="
+            href="https://www.instagram.com/brightmide_?igsh=dG5sbjU2YXZxcWtl"
             target="_blank"
             rel="noopener noreferrer"
           >

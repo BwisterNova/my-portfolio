@@ -5,12 +5,21 @@ import kreaImage from "../../assets/images/kreaAi.png";
 import defavour from "../../assets/images/defavour.png";
 import todoImage from "../../assets/images/todoImage.png";
 import songScribe from "../../assets/images/songScribe.png";
+import starlight from "../../assets/images/starlight.png";
 
 import { BiWorld } from "react-icons/bi";
 
 const projects = [
   {
     id: 1,
+    image: starlight,
+    title: "Starlight ",
+    description:
+      "A luxury-inspired perfume website built with React, featuring polished visuals, responsive layouts, and modern component-based design.",
+    link: "https://starlight-web.netlify.app",
+  },
+  {
+    id: 2,
     image: songScribe,
     title: "SongScribe ",
     description:
@@ -18,7 +27,7 @@ const projects = [
     link: "https://songscribe-lyrics.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     image: kreaImage,
     title: "Krea AI ",
     description:
@@ -26,7 +35,7 @@ const projects = [
     link: "https://kea-landing-page.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     image: defavour,
     title: "Defavour Cakes & Events ",
     description:
@@ -34,7 +43,7 @@ const projects = [
     link: "https://defavour-global-concepts-and-events.netlify.app/",
   },
   {
-    id: 4,
+    id: 5,
     image: todoImage,
     title: "Todo List",
     description:
