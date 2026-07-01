@@ -6,12 +6,21 @@ import defavour from "../../assets/images/defavour.png";
 import todoImage from "../../assets/images/todoImage.png";
 import songScribe from "../../assets/images/songScribe.png";
 import starlight from "../../assets/images/starlight.png";
+import instaWeb from "../../assets/images/instaWeb.png";
 
 import { BiWorld } from "react-icons/bi";
 
 const projects = [
   {
     id: 1,
+    image: instaWeb,
+    title: "Instagram Clone (Modern Form)",
+    description:
+      "A modern Instagram login/signup form built with html, css, and javascript featuring a clean design, responsive layout, and smooth user experience.",
+    link: "https://modern-instagram-form.vercel.app/login.html",
+  },
+  {
+    id: 2,
     image: starlight,
     title: "Starlight ",
     description:
@@ -19,7 +28,7 @@ const projects = [
     link: "https://starlight-web.netlify.app",
   },
   {
-    id: 2,
+    id: 3,
     image: songScribe,
     title: "SongScribe ",
     description:
@@ -27,7 +36,7 @@ const projects = [
     link: "https://songscribe-lyrics.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     image: kreaImage,
     title: "Krea AI ",
     description:
@@ -35,7 +44,7 @@ const projects = [
     link: "https://kea-landing-page.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     image: defavour,
     title: "Defavour Cakes & Events ",
     description:
@@ -43,7 +52,7 @@ const projects = [
     link: "https://defavour-global-concepts-and-events.netlify.app/",
   },
   {
-    id: 5,
+    id: 6,
     image: todoImage,
     title: "Todo List",
     description:
